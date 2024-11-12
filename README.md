@@ -1,10 +1,10 @@
-# The producer-consumer problem: A solution using semaphores and condition variables
+# The producer-consumer problem: A solution using semaphores and condition variables in C++
 
 ## About 
-This project implements a solution to the well-known [producer-consumer](https://en.wikipedia.org/wiki/Producer–consumer_problem) problem using a mutex and condition variables for synchronization. The condition variables allow for condition-based synchronization: threads can be suspended or notified for resuming execution under certain conditions.
+This project implements a solution to the well-known [producer-consumer](https://en.wikipedia.org/wiki/Producer–consumer_problem) problem using a mutex and condition variables for synchronization in the C++ programming language. The condition variables allow for condition-based synchronization: threads can be suspended or notified for resuming execution under certain conditions.
 
 ## The producer-consumer problem
-The producer-consumer problem refers to a data area (a bounded buffer) shared by two types of processes: producers and consumers. Producers generate and insert new elements into the shared buffer while consumers remove and consume elements from the shared buffer. The following constraints must also be satisfied:
+The producer-consumer problem refers to a data area (a bounded buffer) shared by two types of processes: producers and consumers. Producers generate and insert new elements into the shared buffer, while consumers remove and consume elements from the shared buffer. The following constraints must also be satisfied:
 
 * Only one operation (insertion or removal of elements into/from the buffer) can be performed at a time
 * Producers cannot insert new elements when the buffer is full: they must be suspended
