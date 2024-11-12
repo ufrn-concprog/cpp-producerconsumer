@@ -21,7 +21,7 @@ void SharedBuffer::insert(const int item, const std::string producer_id) {
 void SharedBuffer::remove(const std::string consumer_id) {
     std::unique_lock<std::mutex> lock(mutex);
     while (buffer.empty()) {
-        std::cout << "Buffer is full. " << consumer_id << " suspended." << std::endl;
+        std::cout << "Buffer is empty. " << consumer_id << " suspended." << std::endl;
         not_empty.wait(lock);
     }
 
