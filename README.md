@@ -30,8 +30,8 @@ The source code in this repository is organized as follows:
        └─── buffer.cpp      ---> Implementation of the shared buffer and the synchronized operations on it
        └─── consumer.cpp    ---> Implementation of the consumer thread
        └─── producer.cpp    ---> Implementation of the producer thread
-  CMakeLists.txt            ---> Configuration file for CMake
-  main.cpp                  ---> Main program
+  └─── CMakeLists.txt       ---> Configuration file for CMake
+  └─── main.cpp             ---> Main program
     
 ```
 
