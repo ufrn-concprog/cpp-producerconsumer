@@ -1,17 +1,17 @@
 # The producer-consumer problem: A solution using semaphores and condition variables in C++
 
 ## About 
-This project implements a solution to the well-known [producer-consumer](https://en.wikipedia.org/wiki/Producer–consumer_problem) problem using a mutex and condition variables for synchronization in the C++ programming language. The condition variables allow for condition-based synchronization: threads can be suspended or notified for resuming execution under certain conditions.
+This project implements a solution to the well-known [producer-consumer](https://en.wikipedia.org/wiki/Producer–consumer_problem) problem using a mutex and condition variables for synchronization in the C++ programming language. The condition variables enable condition-based synchronization, allowing threads to be suspended or notified for resumption of execution under specific conditions.
 
 ## The producer-consumer problem
-The producer-consumer problem refers to a data area (a bounded buffer) shared by two types of processes: producers and consumers. Producers generate and insert new elements into the shared buffer, while consumers remove and consume elements from the shared buffer. The following constraints must also be satisfied:
+The producer-consumer problem refers to a data area (a bounded buffer) shared by two types of processes: producers and consumers. Producers generate and insert new elements into the shared buffer, while consumers remove and consume elements from it. The following constraints must also be satisfied:
 
 * Only one operation (insertion or removal of elements into/from the buffer) can be performed at a time
 * Producers cannot insert new elements when the buffer is full: they must be suspended
 * Consumers cannot remove elements when the buffer is empty: they must be suspended
 * Elements must be removed in the same order in which they were inserted
 
-This solution to the problem consists of implementing the insertion and removal operations as synchronized methods, thereby ensuring their execution under mutual exclusion. While the current size of the buffer is equal to the established capacity, producer threads should be suspended. If it is possible to add a new element to the buffer, then a consumer thread eventually suspended should be notified to resume execution. On the other hand, while the current size of the buffer is equal to zero, consumer threads should be suspended. If it is possible to remove an element from the buffer, then a producer thread eventually suspended should be notified to resume execution.
+This solution to the problem consists of implementing the insertion and removal operations as synchronized methods, thereby ensuring their execution under mutual exclusion. While the current size of the buffer equals the established capacity, producer threads should be suspended. If it is possible to add a new element to the buffer, then a consumer thread that has been suspended should be notified to resume execution. On the other hand, while the current size of the buffer is equal to zero, consumer threads should be suspended. If it is possible to remove an element from the buffer, then a producer thread that has been suspended should be notified to resume execution.
 
 ## Repository structure
 The source code in this repository is organized as follows:
