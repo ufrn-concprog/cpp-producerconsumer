@@ -5,7 +5,7 @@
 [![Docs](https://img.shields.io/badge/doc-Doxygen-purple)](./doc/index.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This project implements a solution to the well-known [producer-consumer](https://en.wikipedia.org/wiki/Producer–consumer_problem) problem using synchronized methods. In Java, synchronized methods implement monitors to ensure mutual exclusion among concurrent threads when executing methods. These threads are also condition-synchronized; they can be suspended or notified to resume execution under certain conditions.
+This project demonstrates the bounded producer-consumer problem in C++20. It launches producer threads and five consumer threads that share a thread-safe FIFO buffer with a fixed capacity. Each producer generates and inserts one random integer, and each consumer removes one integer. A mutex protects the buffer, while condition variables make producers wait when it is full and consumers wait when it is empty.
 
 ## 📝 The Producer-Consumer Problem
 
@@ -16,7 +16,7 @@ The producer-consumer problem refers to a data area (a bounded buffer) shared by
 * Consumers cannot remove elements when the buffer is empty: they must be suspended
 * Elements must be removed in the same order in which they were inserted
 
-This solution implements the insertion and removal operations as synchronized methods, ensuring they execute under mutual exclusion. When the buffer is full, suspend producer threads. If it is possible to add a new element to the buffer, notify a suspended consumer thread to resume execution. Conversely, when the buffer is empty, consumer threads should be suspended. If it is possible to remove an element from the buffer, notify a suspended producer thread to resume execution.
+The shared buffer uses a mutex to ensure only one thread accesses its queue at a time. Producers wait on a condition variable while the buffer is full; after inserting an item, they notify a waiting consumer. Consumers wait while the buffer is empty; after removing an item, they notify a waiting producer. The queue preserves insertion order, and the program joins all threads before exiting.
 
 ## 📂 Repository structure
 
