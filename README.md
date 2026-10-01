@@ -10,14 +10,13 @@ This project implements a solution to the well-known [producer-consumer](https:/
 ## 📝 The Producer-Consumer Problem
 
 The producer-consumer problem refers to a data area (a bounded buffer) shared by two types of processes, producers and consumers. Producers generate and insert new elements into the shared buffer, while consumers remove and consume elements from it. The following constraints must also be satisfied:
->>>>>>> 104bce3 (Update: README)
 
 * Only one operation (insertion or removal of elements into/from the buffer) can be performed at a time
 * Producers cannot insert new elements when the buffer is full: they must be suspended
 * Consumers cannot remove elements when the buffer is empty: they must be suspended
 * Elements must be removed in the same order in which they were inserted
 
-This solution implements the insertion and removal operations as synchronized methods, ensuring they execute under mutual exclusion. When the buffer is full, producer threads should be suspended. If it is possible to add a new element to the buffer, notify a suspended consumer thread to resume execution. On the other hand, when the buffer size is zero, consumer threads should be suspended. If it is possible to remove an element from the buffer, notify a suspended producer thread to resume execution.
+This solution implements the insertion and removal operations as synchronized methods, ensuring they execute under mutual exclusion. When the buffer is full, suspend producer threads. If it is possible to add a new element to the buffer, notify a suspended consumer thread to resume execution. Conversely, when the buffer is empty, consumer threads should be suspended. If it is possible to remove an element from the buffer, notify a suspended producer thread to resume execution.
 
 ## 📂 Repository structure
 
