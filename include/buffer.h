@@ -38,7 +38,7 @@ private:
  queue<int> buffer;
 
  /** @brief Protects the queue and its capacity checks. */
- mutex mutex;
+ mutex mutex_;
 
  /** @brief Notifies producers when an item is removed. */
  condition_variable not_full;

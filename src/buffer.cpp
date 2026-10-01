@@ -30,7 +30,7 @@ SharedBuffer::SharedBuffer(int cap) : capacity(cap) {}
  * @param consumer_id Identifier of the thread performing the insertion
  */
 void SharedBuffer::insert(const int item, const string producer_id) {
-    unique_lock<std::mutex> lock(mutex);
+    unique_lock<std::mutex> lock(mutex_);
     while ((int)buffer.size() == capacity) {
         cout << "Buffer is full. " << producer_id << " suspended." << endl;
         not_full.wait(lock);
@@ -47,7 +47,7 @@ void SharedBuffer::insert(const int item, const string producer_id) {
  * @param consumer_id Identifier of the consumer performing the removal
  */
 void SharedBuffer::remove(const string consumer_id) {
-    unique_lock<std::mutex> lock(mutex);
+    unique_lock<std::mutex> lock(mutex_);
     while (buffer.empty()) {
         cout << "Buffer is empty. " << consumer_id << " suspended." << endl;
         not_empty.wait(lock);

@@ -7,7 +7,6 @@
  */
 
 #include <cstdlib>
-using std::ctime;
 
 #include <ctime>
 using std::srand;
