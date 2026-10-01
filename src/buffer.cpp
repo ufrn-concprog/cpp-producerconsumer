@@ -1,7 +1,11 @@
 /**
  * @file    buffer.cpp
  * @brief   Implements the bounded buffer shared by producer and consumer 
+<<<<<<< HEAD
  *          threads
+=======
+ *      threads
+>>>>>>> 5f85dde (Update: adding Doxygen-style documentation)
  * @author	Everton Cavalcante (everton.cavalcante@ufrn.br)
  * @date	September 30, 2026
  */
