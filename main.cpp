@@ -1,39 +1,67 @@
+/**
+ * @file    main.cpp
+ * @brief   Implementation of a solution to the Producer-Consumer problem 
+ *          using C++ threads, mutexes, and condition variables
+ * @author	Everton Cavalcante (everton.cavalcante@ufrn.br)
+ * @date	September 30, 2026
+ */
+
 #include <cstdlib>
+using std::ctime;
+
 #include <ctime>
+using std::srand;
+
 #include <iostream>
+using std::cout;
+using std::endl;
+
 #include <string>
+using std::string;
+using std::to_string;
+
 #include <thread>
+using std::thread;
+
 #include <vector>
+using std::vector;
 
 #include "buffer.h"
 #include "consumer.h"
 #include "producer.h"
 
+/** @brief Number of producer and consumer threads created by the program */
 #define NUM_THREADS 5
+
+/** @brief Maximum number of items held in the shared buffer at once */
 #define BUF_CAPACITY 3
 
+/**
+ * @brief Main function
+ * @return Exit status code
+ */
 int main() {
     srand(time(NULL));
 
     SharedBuffer buffer(BUF_CAPACITY);
 
-    std::vector<std::thread> producers;
+    vector<thread> producers;
     for (int i = 0; i < NUM_THREADS; i++) {
-        std::string id = "Producer " + std::to_string(i+1);
-        producers.push_back(std::thread(Producer(buffer, id)));
+        string id = "Producer " + to_string(i+1);
+        producers.push_back(thread(Producer(buffer, id)));
     }
 
-    std::vector<std::thread> consumers;
+    vector<thread> consumers;
     for (int i = 0; i < NUM_THREADS; i++) {
-        std::string id = "Consumer " + std::to_string(i + 1);
-        consumers.push_back(std::thread(Consumer(buffer, id)));
+        string id = "Consumer " + to_string(i + 1);
+        consumers.push_back(thread(Consumer(buffer, id)));
     }
 
-    for (std::thread& p : producers) {
+    for (thread& p : producers) {
         p.join();
     }
 
-    for (std::thread& c : consumers) {
+    for (thread& c : consumers) {
         c.join();
     }
 
