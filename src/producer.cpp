@@ -10,9 +10,10 @@ using std::rand;
 
 #include "producer.h"
 
-/** @brief Stores the shared buffer reference and producer identifier.
- *  @param buf Buffer that receives the produced item.
- *  @param _id Identifier for this producer.
+/** 
+ * @brief Stores the shared buffer reference and producer identifier.
+ * @param buf Buffer that receives the produced item.
+ * @param _id Identifier for this producer.
  */
 Producer::Producer(SharedBuffer& buf, string _id) : buffer(buf), id(_id) {}
 

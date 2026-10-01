@@ -56,9 +56,9 @@ public:
     /** 
      * @brief Adds an item, waiting until the buffer has free capacity
      * @param item Integer item to enqueue
-     * @param consumer_id Identifier of the thread performing the insertion
+     * @param producer_id Identifier of the thread performing the insertion
      */
-    void insert(const int item, const string consumer_id);
+    void insert(const int item, const string producer_id);
 
     /** 
      * @brief Removes the oldest item, waiting until the buffer is nonempty

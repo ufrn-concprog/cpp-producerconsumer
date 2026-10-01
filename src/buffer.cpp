@@ -27,7 +27,7 @@ SharedBuffer::SharedBuffer(int cap) : capacity(cap) {}
 /**
  * @brief Adds an item, waiting until the buffer has free capacity
  * @param item Integer item to enqueue
- * @param consumer_id Identifier of the thread performing the insertion
+ * @param producer_id Identifier of the thread performing the insertion
  */
 void SharedBuffer::insert(const int item, const string producer_id) {
     unique_lock<std::mutex> lock(mutex_);
